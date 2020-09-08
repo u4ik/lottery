@@ -143,10 +143,10 @@ const Generator = () => {
     function changeRandom() {
         setFirstNum(randomNumber(1, 76).toString());
         setSecondNum(randomNumber(1, 76).toString());
-        setThirdNum(randomNumber(1, 10));
-        setFourthNum(randomNumber(1, 10));
-        setFifthNum(randomNumber(1, 10));
-        setMBallNum(randomNumber(1, 10));
+        setThirdNum(randomNumber(1, 76).toString());
+        setFourthNum(randomNumber(1, 76).toString());
+        setFifthNum(randomNumber(1, 76).toString());
+        setMBallNum(randomNumber(1, 26).toString());
     };
     //Winning Results .map Function------------------------------------------------------------------------------------------------->
     function mapNLog() {
@@ -191,6 +191,11 @@ const Generator = () => {
                 // console.log(winning.winning_numbers.slice(12, 14))
                 console.log(`This number: ${fifthNum}, has won at the fifth position on : ${winning.draw_date.slice(0, 10)}`);
             }
+            
+
+
+
+
             return (
                 <div key={index}>
                     {selectFirstNum ?
@@ -203,7 +208,7 @@ const Generator = () => {
                         : null}
                     {selectSecondNum ?
                         <div>
-                            {secondNum == winning.winning_numbers.slice(3, 6) ?
+                            {secondNum == winning.winning_numbers.slice(3, 5) ?
                                 <ul >
                                     <li style={firstNumHisWinStyle} >The number: {secondNum}, has won at the second position on : {winning.draw_date.slice(0, 10)}</li>
                                 </ul> : null}
@@ -211,7 +216,7 @@ const Generator = () => {
                     }
                     {selectThirdNum ?
                         <div>
-                            {thirdNum == winning.winning_numbers.slice(6, 9) ?
+                            {thirdNum == winning.winning_numbers.slice(6, 8) ?
                                 <ul >
                                     <li style={firstNumHisWinStyle} >The number: {thirdNum}, has won at the third position on : {winning.draw_date.slice(0, 10)}</li>
                                 </ul> : null}
