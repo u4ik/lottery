@@ -17,7 +17,7 @@ const Generator = () => {
     //All Winning #'s Stored In This Array-------------------------------------------------------------------------------->
     const [winningNumArr, setWinningNumArr] = useState([]);
     //Displays Content and Random #'s Once User Clicks The 'Generate Button!'--------------------------------------------->
-    const [generatorToggle, setGeneratorToggle] = useState(true);
+    const [generatorToggle, setGeneratorToggle] = useState(false);
     //Occurrence Array Built For Each Selected Ball----------------------------------------------------------------------->
     const [occ1Array, setOcc1Array] = useState([]);
     const [occ2Array, setOcc2Array] = useState([]);
