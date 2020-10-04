@@ -457,8 +457,8 @@ const Generator = () => {
     return (
         <div style={{ margin: '0 auto', paddingTop: '5vh' }}>
             {/* //iFrame Current Jackpot-------------------------------------------------------------------------------------------------> */}
-            <div style={{ top: '6vh', left: '6vw', border: '0px solid rgb(201, 0, 1)', borderRadius: '20px', overflow: 'hidden', margin: '0px auto', maxWidth: '300px', maxHeight: '600px', marginBottom: '15%', filter: 'drop-shadow(1px 1px 1px black)', position: 'fixed', transform: 'scale(.6)' }}>
-                <iframe title='Draw Counter' scrolling="no" src="https://lottery.com/" style={{ border: '0px none', marginLeft: '-55px', height: '400px', marginBottom: '', marginTop: '-290px', width: '420px' }}>
+            <div style={{ top: '6vh', left: '6vw', border: '0px solid rgb(201, 0, 1)', borderRadius: '20px', overflow: 'hidden', margin: '0px auto', maxWidth: '800px', maxHeight: '600px', marginBottom: '15%', filter: 'drop-shadow(1px 1px 1px black)', position: 'fixed', transform: 'scale(.6)' }}>
+                <iframe title='Draw Counter' scrolling="no" src="https://lottery.com/" style={{ border: '0px none', marginLeft: '-360px', height: '400px', marginBottom: '', marginTop: '-290px', width: '770px' }}>
                 </iframe>
             </div>
             <p style={oddsTextStyle}> Odds : 1 in 302,575,350.</p>
