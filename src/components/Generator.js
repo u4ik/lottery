@@ -1,52 +1,52 @@
 import React, { useState, useEffect } from 'react';
 const Generator = () => {
+    //Assigning Random Generated #'s To States --------------------------------------------------------------------------->
     const [firstNum, setFirstNum] = useState('');
-    const [selectFirstNum, setSelectFirstNum] = useState(false);
     const [secondNum, setSecondNum] = useState('');
-    const [selectSecondNum, setSelectSecondNum] = useState(false);
     const [thirdNum, setThirdNum] = useState('');
-    const [selectThirdNum, setSelectThirdNum] = useState(false);
     const [fourthNum, setFourthNum] = useState('');
-    const [selectFourthNum, setSelectFourthNum] = useState(false);
     const [fifthNum, setFifthNum] = useState('');
-    const [selectFifthNum, setSelectFifthNum] = useState(false);
     const [mBallNum, setMBallNum] = useState('');
+    //Selecting Number Via. Click----------------------------------------------------------------------------------------->
+    const [selectFirstNum, setSelectFirstNum] = useState(false);
+    const [selectSecondNum, setSelectSecondNum] = useState(false);
+    const [selectThirdNum, setSelectThirdNum] = useState(false);
+    const [selectFourthNum, setSelectFourthNum] = useState(false);
+    const [selectFifthNum, setSelectFifthNum] = useState(false);
     const [selectMBallNum, setSelectMBallNum] = useState(false);
-    //All Winning #'s Stored In This Array
+    //All Winning #'s Stored In This Array-------------------------------------------------------------------------------->
     const [winningNumArr, setWinningNumArr] = useState([]);
-    //
+    //Displays Content and Random #'s Once User Clicks The 'Generate Button!'--------------------------------------------->
     const [generatorToggle, setGeneratorToggle] = useState(true);
-
-    //Occurrence Array Built For Each Selected Ball
+    //Occurrence Array Built For Each Selected Ball----------------------------------------------------------------------->
     const [occ1Array, setOcc1Array] = useState([]);
     const [occ2Array, setOcc2Array] = useState([]);
     const [occ3Array, setOcc3Array] = useState([]);
     const [occ4Array, setOcc4Array] = useState([]);
     const [occ5Array, setOcc5Array] = useState([]);
     const [occ6Array, setOcc6Array] = useState([]);
-
-    //Select Ball On Click Drop Shadow
+    //Select Ball On Click Drop Shadow------------------------------------------------------------------------------------>
     const [ballSelectHighLight1, setBallSelectHighlight1] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight2, setBallSelectHighlight2] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight3, setBallSelectHighlight3] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight4, setBallSelectHighlight4] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight5, setBallSelectHighlight5] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight6, setBallSelectHighlight6] = useState('drop-shadow(5px 5px 4px black)');
-    //Random # Array------------------------------------------------------------------------------------------------->
+    //Random # Array------------------------------------------------------------------------------------------------------>
     var numArr = [firstNum, secondNum, thirdNum, fourthNum, fifthNum, mBallNum];
-    //Occurrence # Array------------------------------------------------------------------------------------------------->
+    //Occurrence # Array-------------------------------------------------------------------------------------------------->
     let occ1Count = 0;
     let occ2Count = 0;
     let occ3Count = 0;
     let occ4Count = 0;
     let occ5Count = 0;
     let occ6Count = 0;
-    //Formatted Arrays------------------------------------------------------------------------------------------------->
+    //Formatted Arrays---------------------------------------------------------------------------------------------------->
     let formattedRandomNumDash = numArr[0] + '-' + numArr[1] + '-' + numArr[2] + '-' + numArr[3] + '-' + numArr[4] + '-' + numArr[5];
     let formattedRandomNumSpace = numArr[0] + ' ' + numArr[1] + ' ' + numArr[2] + ' ' + numArr[3] + ' ' + numArr[4] + ' ' + numArr[5];
-    //Global Font...for now------------------------------------------------------------------------------------------------->
+    //Global Font...for now----------------------------------------------------------------------------------------------->
     let fontSize = '8rem';
-    //CSS Styles------------------------------------------------------------------------------------------------->
+    //CSS Styles---------------------------------------------------------------------------------------------------------->
     const lottoNum1 = {
         fontSize: fontSize,
         fontWeight: '550',
@@ -147,7 +147,7 @@ const Generator = () => {
         fontWeight: '700',
         marginTop: '-45%'
     };
-    //Random # Generator Within Bounds------------------------------------------------------------------------------------------------->
+    //Random # Generator Within Bounds------------------------------------------------------------------------------------>
     function randomNumber(min, max) {
         let randNum = Math.floor(Math.random() * (max - min) + min);
         if (randNum < 10) {
@@ -160,7 +160,7 @@ const Generator = () => {
             return randNum
         }
     };
-    //Random # Set Generator------------------------------------------------------------------------------------------------->
+    //Random # Set Generator---------------------------------------------------------------------------------------------->
     function changeRandom() {
         setFirstNum(randomNumber(1, 76).toString());
         setSecondNum(randomNumber(1, 76).toString());
@@ -169,7 +169,7 @@ const Generator = () => {
         setFifthNum(randomNumber(1, 76).toString());
         setMBallNum(randomNumber(1, 26).toString());
     };
-    //Occurrence Function----------------------------------------------------------------------------------------------------->
+    //Occurrence Function------------------------------------------------------------------------------------------------->
     function occurrence(winning) {
         if (selectFirstNum) {
             if (firstNum == winning.winning_numbers.slice(0, 2)) {
@@ -230,17 +230,26 @@ const Generator = () => {
                 };
             };
         };
+        if (selectMBallNum) {
+            if (mBallNum == winning.mega_ball) {
+                if (occ6Count >= 0) {
+                    if (occ6Array.length >= 0) {
+                        let newNum = occ6Array.length;
+                        newNum++;
+                        occ6Array.push(newNum);
+                        occ6Count = occ6Array.length
+                    };
+                };
+            };
+        };
     };
-
-
     //Executing the Occurrence Function If A Ball Is Selected
     if (selectFirstNum === true || selectSecondNum === true || selectThirdNum === true || selectFourthNum === true || selectFifthNum === true || selectMBallNum === true) {
         winningNumArr.map((winning => {
             occurrence(winning);
         }))
     };
-
-    //Winning Results .map Function------------------------------------------------------------------------------------------------->
+    //Winning Results .map Function--------------------------------------------------------------------------------------->
     function mapNLog() {
         return winningNumArr.map((winning, index) => {
             //If All Random #'s Match
@@ -286,7 +295,15 @@ const Generator = () => {
                         <div>
                             {fifthNum == winning.winning_numbers.slice(12, 14) ?
                                 <ul >
-                                    <li style={firstNumHisWinStyle} > The number: {winning.winning_numbers.slice(12, 14)}, has won at the fifth position on : {winning.draw_date.slice(0, 10)}</li>
+                                    <li style={firstNumHisWinStyle} > The number: {fifthNum}, has won at the fifth position on : {winning.draw_date.slice(0, 10)}</li>
+                                </ul> : null}
+                        </div> : null
+                    }
+                    {selectMBallNum ?
+                        <div>
+                            {mBallNum == winning.mega_ball ?
+                                <ul >
+                                    <li style={firstNumHisWinStyle} > The number: {mBallNum}, has won at this position on : {winning.draw_date.slice(0, 10)}</li>
                                 </ul> : null}
                         </div> : null
                     }
@@ -294,13 +311,13 @@ const Generator = () => {
             )
         });
     };
-    //Fetch Winning Results Function------------------------------------------------------------------------------------------------->
+    //Fetch Winning Results Function-------------------------------------------------------------------------------------->
     const fetchWinningNum = async () => {
         let response = await fetch('https://data.ny.gov/resource/5xaw-6ayf.json')
         let data = await response.json();
         setWinningNumArr(data);
     };
-    //useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------------------------------->
+    //useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------->
     useEffect(() => {
         fetchWinningNum();
     }, []);
@@ -434,8 +451,8 @@ const Generator = () => {
         setOcc2Array([]);
         setOcc3Array([]);
         setOcc4Array([]);
+        setOcc5Array([]);
 
-        setOcc6Array([]);
     }
     return (
         <div style={{ margin: '0 auto', paddingTop: '5vh' }}>
@@ -445,29 +462,32 @@ const Generator = () => {
                 </iframe> */}
             </div>
             <p style={oddsTextStyle}> Odds : 1 in 302,575,350.</p>
-            {/* //Occurrence Count-------------------------------------------------------------------------------------------------> */}
+            {/* //Occurrence Count Dispaly-------------------------------------------------------------------------------------------------> */}
             {generatorToggle ?
                 <div>
                     {selectFirstNum ?
-                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has had only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
                         : null}
 
                     {selectSecondNum ?
-                        <p style={occurrenceTextStyle}>{`Ball #2: ` + `${occ2Array.length == 0 ? `${secondNum} has not won in this position.` : occ2Array.length == 1 ? `${secondNum} has only ${occ2Array.length} occurrence.` : `${secondNum} has had ${occ2Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #2: ` + `${occ2Array.length == 0 ? `${secondNum} has not won in this position.` : occ2Array.length == 1 ? `${secondNum} has had only ${occ2Array.length} occurrence.` : `${secondNum} has had ${occ2Array.length} occurrences.`}`}</p>
                         : null}
                     {selectThirdNum ?
-                        <p style={occurrenceTextStyle}>{`Ball #3: ` + `${occ3Array.length == 0 ? `${thirdNum} has not won in this position.` : occ3Array.length == 1 ? `${thirdNum} has only ${occ3Array.length} occurrence.` : `${thirdNum} has had ${occ3Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #3: ` + `${occ3Array.length == 0 ? `${thirdNum} has not won in this position.` : occ3Array.length == 1 ? `${thirdNum} has had only ${occ3Array.length} occurrence.` : `${thirdNum} has had ${occ3Array.length} occurrences.`}`}</p>
                         : null}
                     {selectFourthNum ?
-                          <p style={occurrenceTextStyle}>{`Ball #4: ` + `${occ4Array.length == 0 ? `${fourthNum} has not won in this position.` : occ4Array.length == 1 ? `${fourthNum} has only ${occ4Array.length} occurrence.` : `${fourthNum} has had ${occ4Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #4: ` + `${occ4Array.length == 0 ? `${fourthNum} has not won in this position.` : occ4Array.length == 1 ? `${fourthNum} has had only ${occ4Array.length} occurrence.` : `${fourthNum} has had ${occ4Array.length} occurrences.`}`}</p>
                         : null}
                     {selectFifthNum ?
-                       <p style={occurrenceTextStyle}>{`Ball #5: ` + `${occ5Array.length == 0 ? `${fifthNum} has not won in this position.` : occ5Array.length == 1 ? `${fifthNum} has only ${occ5Array.length} occurrence.` : `${fifthNum} has had ${occ5Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #5: ` + `${occ5Array.length == 0 ? `${fifthNum} has not won in this position.` : occ5Array.length == 1 ? `${fifthNum} has had only ${occ5Array.length} occurrence.` : `${fifthNum} has had ${occ5Array.length} occurrences.`}`}</p>
+                        : null}
+                    {selectMBallNum ?
+                        <p style={occurrenceTextStyle}>{`MBall #6: ` + `${occ6Array.length == 0 ? `${mBallNum} has not won in this position.` : occ6Array.length == 1 ? `${mBallNum} has had only ${occ6Array.length} occurrence.` : `${mBallNum} has had ${occ6Array.length} occurrences.`}`}</p>
                         : null}
                 </div>
                 : null}
             {/* //Current Random # Set Displayed-------------------------------------------------------------------------------------------------> */}
-            {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null}
+            {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
             {/* All Balls Being Displayed w/ OnClicks */}
             {generatorToggle ?
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: '', transform: 'scale(.6)', marginTop: '-15%' }}>
