@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 const Generator = () => {
-
     const [firstNum, setFirstNum] = useState('');
     const [selectFirstNum, setSelectFirstNum] = useState(false);
     const [secondNum, setSecondNum] = useState('');
@@ -17,7 +15,7 @@ const Generator = () => {
     //All Winning #'s Stored In This Array
     const [winningNumArr, setWinningNumArr] = useState([]);
     //
-    const [generatorToggle, setGeneratorToggle] = useState(false);
+    const [generatorToggle, setGeneratorToggle] = useState(true);
 
     //Occurrence Array Built For Each Selected Ball
     const [occ1Array, setOcc1Array] = useState([]);
@@ -173,65 +171,81 @@ const Generator = () => {
     };
     //Occurrence Function----------------------------------------------------------------------------------------------------->
     function occurrence(winning) {
-        if (firstNum == winning.winning_numbers.slice(0, 2)) {
-            if (occ1Count >= 0) {
-                let newNum = occ1Array.length;
-                newNum++;
-                occ1Array.push(newNum);
-                occ1Count = occ1Array.length
-                console.log(occ1Array.length);
-                console.log(occ1Count)
+        if (selectFirstNum) {
+            if (firstNum == winning.winning_numbers.slice(0, 2)) {
+                if (occ1Count >= 0) {
+                    let newNum = occ1Array.length;
+                    newNum++;
+                    occ1Array.push(newNum);
+                    occ1Count = occ1Array.length
+                };
             };
         };
-        if (secondNum == winning.winning_numbers.slice(3, 5)) {
-            if (occ2Count >= 0) {
-                if (occ2Array.length >= 0) {
-                    let newNum = occ2Count;
+        if (selectSecondNum) {
+            if (secondNum == winning.winning_numbers.slice(3, 5)) {
+                if (occ2Count >= 0) {
+                    let newNum = occ2Array.length;
+                    newNum++;
                     occ2Count++;
                     occ2Array.push(newNum);
-                    console.log(occ2Array)
+                    occ2Count = occ2Array.length;
+                    // console.log(occ2Array);
+
                 };
             };
         };
-        if (thirdNum == winning.winning_numbers.slice(6, 8)) {
-            if (occ3Count >= 1) {
-                if (occ3Array.length >= 0) {
-                    let newNum = occ3Count;
-                    occ3Count++;
-                    occ3Array.push(newNum);
+        if (selectThirdNum) {
+            if (thirdNum == winning.winning_numbers.slice(6, 8)) {
+                if (occ3Count >= 0) {
+                    if (occ3Array.length >= 0) {
+                        let newNum = occ3Array.length;
+                        newNum++;
+                        occ3Array.push(newNum);
+                        occ3Count = occ3Array.length
+                    };
                 };
             };
         };
-        if (fourthNum == winning.winning_numbers.slice(9, 11)) {
-            if (occ4Count >= 1) {
-                if (occ4Array.length >= 0) {
-                    let newNum = occ4Count;
-                    occ4Count++;
-                    occ4Array.push(newNum);
+        if (selectFourthNum) {
+            if (fourthNum == winning.winning_numbers.slice(9, 11)) {
+                if (occ4Count >= 0) {
+                    if (occ4Array.length >= 0) {
+                        let newNum = occ4Array.length;
+                        newNum++;
+                        occ4Array.push(newNum);
+                        occ4Count = occ4Array.length
+                    };
                 };
             };
         };
-        if (fifthNum == winning.winning_numbers.slice(12, 14)) {
-            if (occ5Count >= 1) {
-                if (occ5Array.length >= 0) {
-                    let newNum = occ5Count;
-                    occ5Count++;
-                    occ5Array.push(newNum);
-                    console.log(occ5Array);
+        if (selectFifthNum) {
+            if (fifthNum == winning.winning_numbers.slice(12, 14)) {
+                if (occ5Count >= 0) {
+                    if (occ5Array.length >= 0) {
+                        let newNum = occ5Array.length;
+                        newNum++;
+                        occ5Array.push(newNum);
+                        occ5Count = occ5Array.length
+                    };
                 };
             };
         };
     };
+
+
+    //Executing the Occurrence Function If A Ball Is Selected
+    if (selectFirstNum === true || selectSecondNum === true || selectThirdNum === true || selectFourthNum === true || selectFifthNum === true || selectMBallNum === true) {
+        winningNumArr.map((winning => {
+            occurrence(winning);
+        }))
+    };
+
     //Winning Results .map Function------------------------------------------------------------------------------------------------->
     function mapNLog() {
         return winningNumArr.map((winning, index) => {
             //If All Random #'s Match
             if (formattedRandomNumSpace.replace(/\s/g, '') === (winning.winning_numbers.replace(/\s/g, '') + winning.mega_ball.replace(/\s/g, '')).replace(/\s/g, '')) {
                 console.log(`This combination won on : ${winning.draw_date.slice(0, 10)}!!`)
-            };
-            //Executing the Occurrence Function If A Ball Is Selected
-            if (selectFirstNum === true || selectSecondNum === true || selectThirdNum === true || selectFourthNum === true || selectFifthNum === true || selectMBallNum === true) {
-                occurrence(winning);
             };
             return (
                 //Returning All Occurrences And Display Date For The Selected Number
@@ -284,13 +298,9 @@ const Generator = () => {
     const fetchWinningNum = async () => {
         let response = await fetch('https://data.ny.gov/resource/5xaw-6ayf.json')
         let data = await response.json();
-
         setWinningNumArr(data);
-        // data.map((winning, index) => {
-        //     occurrence(winning)
-        // });
     };
-    //useEffect to Fetch Winning Num------------------------------------------------------------------------------------------------->
+    //useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------------------------------->
     useEffect(() => {
         fetchWinningNum();
     }, []);
@@ -439,20 +449,20 @@ const Generator = () => {
             {generatorToggle ?
                 <div>
                     {selectFirstNum ?
-                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 0 ?`${firstNum} has not won in this position.` :occ1Array.length == 1 ? `${firstNum} has only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Count} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
                         : null}
 
                     {selectSecondNum ?
-                        <p style={occurrenceTextStyle}>{occ2Array.length}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #2: ` + `${occ2Array.length == 0 ? `${secondNum} has not won in this position.` : occ2Array.length == 1 ? `${secondNum} has only ${occ2Array.length} occurrence.` : `${secondNum} has had ${occ2Array.length} occurrences.`}`}</p>
                         : null}
                     {selectThirdNum ?
-                        <p style={occurrenceTextStyle}>{occ3Array.length}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #3: ` + `${occ3Array.length == 0 ? `${thirdNum} has not won in this position.` : occ3Array.length == 1 ? `${thirdNum} has only ${occ3Array.length} occurrence.` : `${thirdNum} has had ${occ3Array.length} occurrences.`}`}</p>
                         : null}
                     {selectFourthNum ?
-                        <p style={occurrenceTextStyle}>{occ4Array.length}</p>
+                          <p style={occurrenceTextStyle}>{`Ball #4: ` + `${occ4Array.length == 0 ? `${fourthNum} has not won in this position.` : occ4Array.length == 1 ? `${fourthNum} has only ${occ4Array.length} occurrence.` : `${fourthNum} has had ${occ4Array.length} occurrences.`}`}</p>
                         : null}
                     {selectFifthNum ?
-                        <p style={occurrenceTextStyle}>{occ5Array.length}</p>
+                       <p style={occurrenceTextStyle}>{`Ball #5: ` + `${occ5Array.length == 0 ? `${fifthNum} has not won in this position.` : occ5Array.length == 1 ? `${fifthNum} has only ${occ5Array.length} occurrence.` : `${fifthNum} has had ${occ5Array.length} occurrences.`}`}</p>
                         : null}
                 </div>
                 : null}
@@ -535,6 +545,5 @@ const Generator = () => {
         </div>
     )
 };
-
 
 export default Generator;

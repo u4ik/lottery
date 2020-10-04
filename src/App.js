@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import logo from './assets/megamillogo.svg'
 
@@ -23,6 +23,7 @@ function App() {
 
   }
   return (
+    <Scrollbars style={{ width: '100vw', height: '100vh' }}>
     <div className="App" style={appStyle}>
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
         <div style={{display:'flex', flexDirection:'row', justifyContent:'center', marginTop:'2%',  filter:'drop-shadow(10px 10px 10px black)'}}>
@@ -32,6 +33,7 @@ function App() {
  
       </div>
     </div>
+    </Scrollbars>
   );
 }
 
