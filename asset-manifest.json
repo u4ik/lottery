@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/lottery/static/css/main.275b7f53.chunk.css",
-    "main.js": "/lottery/static/js/main.684d6cbf.chunk.js",
-    "main.js.map": "/lottery/static/js/main.684d6cbf.chunk.js.map",
+    "main.js": "/lottery/static/js/main.91a3374a.chunk.js",
+    "main.js.map": "/lottery/static/js/main.91a3374a.chunk.js.map",
     "runtime-main.js": "/lottery/static/js/runtime-main.616fde27.js",
     "runtime-main.js.map": "/lottery/static/js/runtime-main.616fde27.js.map",
     "static/js/2.510c0242.chunk.js": "/lottery/static/js/2.510c0242.chunk.js",
     "static/js/2.510c0242.chunk.js.map": "/lottery/static/js/2.510c0242.chunk.js.map",
     "index.html": "/lottery/index.html",
-    "precache-manifest.a5a9e379e4d320a05ab87a93eaa42dd7.js": "/lottery/precache-manifest.a5a9e379e4d320a05ab87a93eaa42dd7.js",
+    "precache-manifest.1963e76c16364b40b10b3aee9deb20ad.js": "/lottery/precache-manifest.1963e76c16364b40b10b3aee9deb20ad.js",
     "service-worker.js": "/lottery/service-worker.js",
     "static/css/main.275b7f53.chunk.css.map": "/lottery/static/css/main.275b7f53.chunk.css.map",
     "static/js/2.510c0242.chunk.js.LICENSE.txt": "/lottery/static/js/2.510c0242.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.616fde27.js",
     "static/js/2.510c0242.chunk.js",
     "static/css/main.275b7f53.chunk.css",
-    "static/js/main.684d6cbf.chunk.js"
+    "static/js/main.91a3374a.chunk.js"
   ]
 }
