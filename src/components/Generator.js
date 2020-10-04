@@ -4,38 +4,30 @@ const Generator = () => {
 
     const [firstNum, setFirstNum] = useState('');
     const [selectFirstNum, setSelectFirstNum] = useState(false);
-
     const [secondNum, setSecondNum] = useState('');
     const [selectSecondNum, setSelectSecondNum] = useState(false);
-
     const [thirdNum, setThirdNum] = useState('');
     const [selectThirdNum, setSelectThirdNum] = useState(false);
-
     const [fourthNum, setFourthNum] = useState('');
     const [selectFourthNum, setSelectFourthNum] = useState(false);
-
     const [fifthNum, setFifthNum] = useState('');
     const [selectFifthNum, setSelectFifthNum] = useState(false);
-
     const [mBallNum, setMBallNum] = useState('');
     const [selectMBallNum, setSelectMBallNum] = useState(false);
-
+    //All Winning #'s Stored In This Array
     const [winningNumArr, setWinningNumArr] = useState([]);
+    //
+    const [generatorToggle, setGeneratorToggle] = useState(false);
 
-    const [generatorToggle, setGeneratorToggle] = useState(true);
-
-    const [countCheck, setCountCheck] = useState(0);
-
+    //Occurrence Array Built For Each Selected Ball
     const [occ1Array, setOcc1Array] = useState([]);
-    // const [occ1Test, setOcc1Test] = useState([])
-
     const [occ2Array, setOcc2Array] = useState([]);
     const [occ3Array, setOcc3Array] = useState([]);
     const [occ4Array, setOcc4Array] = useState([]);
     const [occ5Array, setOcc5Array] = useState([]);
     const [occ6Array, setOcc6Array] = useState([]);
 
-
+    //Select Ball On Click Drop Shadow
     const [ballSelectHighLight1, setBallSelectHighlight1] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight2, setBallSelectHighlight2] = useState('drop-shadow(5px 5px 4px black)');
     const [ballSelectHighLight3, setBallSelectHighlight3] = useState('drop-shadow(5px 5px 4px black)');
@@ -45,12 +37,12 @@ const Generator = () => {
     //Random # Array------------------------------------------------------------------------------------------------->
     var numArr = [firstNum, secondNum, thirdNum, fourthNum, fifthNum, mBallNum];
     //Occurrence # Array------------------------------------------------------------------------------------------------->
-    // let occ1Count = 0;
-    // let occ2Count = 0;
-    // let occ3Count = 0;
-    // let occ4Count = 0;
-    // let occ5Count = 0;
-    // let occ6Count = 0;
+    let occ1Count = 0;
+    let occ2Count = 0;
+    let occ3Count = 0;
+    let occ4Count = 0;
+    let occ5Count = 0;
+    let occ6Count = 0;
     //Formatted Arrays------------------------------------------------------------------------------------------------->
     let formattedRandomNumDash = numArr[0] + '-' + numArr[1] + '-' + numArr[2] + '-' + numArr[3] + '-' + numArr[4] + '-' + numArr[5];
     let formattedRandomNumSpace = numArr[0] + ' ' + numArr[1] + ' ' + numArr[2] + ' ' + numArr[3] + ' ' + numArr[4] + ' ' + numArr[5];
@@ -170,7 +162,7 @@ const Generator = () => {
             return randNum
         }
     };
-    //Random # Set Generator ------------------------------------------------------------------------------------------------->
+    //Random # Set Generator------------------------------------------------------------------------------------------------->
     function changeRandom() {
         setFirstNum(randomNumber(1, 76).toString());
         setSecondNum(randomNumber(1, 76).toString());
@@ -179,72 +171,61 @@ const Generator = () => {
         setFifthNum(randomNumber(1, 76).toString());
         setMBallNum(randomNumber(1, 26).toString());
     };
+    //Occurrence Function----------------------------------------------------------------------------------------------------->
     function occurrence(winning) {
-
         if (firstNum == winning.winning_numbers.slice(0, 2)) {
-
-
-
-            if (occ1Array.length >= 0) {
-
+            if (occ1Count >= 0) {
                 let newNum = occ1Array.length;
-
-                // setOcc1Test(newNum);
-
-                // console.log(newNum)
-
                 newNum++;
                 occ1Array.push(newNum);
-                // console.log(occ1Array);
-                // setOcc1Count(occ1Array.length)
-                
-                // console.log(occ1Count)
-
+                occ1Count = occ1Array.length
+                console.log(occ1Array.length);
+                console.log(occ1Count)
             };
         };
-        // if (secondNum == winning.winning_numbers.slice(3, 5)) {
-        //     if (occ2Count >= 1) {
-        //         if (occ2Array.length >= 0) {
-        //             let newNum = occ2Count;
-        //             occ2Count++;
-        //             occ2Array.push(newNum);
-        //             console.log(occ2Array)
-        //         };
-        //     };
-        // };
-        // if (thirdNum == winning.winning_numbers.slice(6, 8)) {
-        //     if (occ3Count >= 1) {
-        //         if (occ3Array.length >= 0) {
-        //             let newNum = occ3Count;
-        //             occ3Count++;
-        //             occ3Array.push(newNum);
-        //         };
-        //     };
-        // };
-        // if (fourthNum == winning.winning_numbers.slice(9, 11)) {
-        //     if (occ4Count >= 1) {
-        //         if (occ4Array.length >= 0) {
-        //             let newNum = occ4Count;
-        //             occ4Count++;
-        //             occ4Array.push(newNum);
-        //         };
-        //     };
-        // };
-        // if (fifthNum == winning.winning_numbers.slice(12, 14)) {
-        //     if (occ5Count >= 1) {
-        //         if (occ5Array.length >= 0) {
-        //             let newNum = occ5Count;
-        //             occ5Count++;
-        //             occ5Array.push(newNum);
-        //             console.log(occ5Array);
-        //         };
-        //     };
-        // };
+        if (secondNum == winning.winning_numbers.slice(3, 5)) {
+            if (occ2Count >= 0) {
+                if (occ2Array.length >= 0) {
+                    let newNum = occ2Count;
+                    occ2Count++;
+                    occ2Array.push(newNum);
+                    console.log(occ2Array)
+                };
+            };
+        };
+        if (thirdNum == winning.winning_numbers.slice(6, 8)) {
+            if (occ3Count >= 1) {
+                if (occ3Array.length >= 0) {
+                    let newNum = occ3Count;
+                    occ3Count++;
+                    occ3Array.push(newNum);
+                };
+            };
+        };
+        if (fourthNum == winning.winning_numbers.slice(9, 11)) {
+            if (occ4Count >= 1) {
+                if (occ4Array.length >= 0) {
+                    let newNum = occ4Count;
+                    occ4Count++;
+                    occ4Array.push(newNum);
+                };
+            };
+        };
+        if (fifthNum == winning.winning_numbers.slice(12, 14)) {
+            if (occ5Count >= 1) {
+                if (occ5Array.length >= 0) {
+                    let newNum = occ5Count;
+                    occ5Count++;
+                    occ5Array.push(newNum);
+                    console.log(occ5Array);
+                };
+            };
+        };
     };
-
     //Winning Results .map Function------------------------------------------------------------------------------------------------->
     function mapNLog() {
         return winningNumArr.map((winning, index) => {
+            //If All Random #'s Match
             if (formattedRandomNumSpace.replace(/\s/g, '') === (winning.winning_numbers.replace(/\s/g, '') + winning.mega_ball.replace(/\s/g, '')).replace(/\s/g, '')) {
                 console.log(`This combination won on : ${winning.draw_date.slice(0, 10)}!!`)
             };
@@ -305,11 +286,10 @@ const Generator = () => {
         let data = await response.json();
 
         setWinningNumArr(data);
-        data.map((winning, index) => {
-            occurrence(winning)
-        });
+        // data.map((winning, index) => {
+        //     occurrence(winning)
+        // });
     };
-
     //useEffect to Fetch Winning Num------------------------------------------------------------------------------------------------->
     useEffect(() => {
         fetchWinningNum();
@@ -330,11 +310,11 @@ const Generator = () => {
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
 
-        // setOcc2Array([]);
-        // setOcc3Array([]);
-        // setOcc4Array([]);
-        // setOcc5Array([]);
-        // setOcc6Array([]);
+        setOcc2Array([]);
+        setOcc3Array([]);
+        setOcc4Array([]);
+        setOcc5Array([]);
+        setOcc6Array([]);
     };
     const selectSecondBall = () => {
         setSelectFirstNum(false);
@@ -459,11 +439,11 @@ const Generator = () => {
             {generatorToggle ?
                 <div>
                     {selectFirstNum ?
-                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 1 ? `${firstNum} has only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
+                        <p style={occurrenceTextStyle}>{`Ball #1: ` + `${occ1Array.length == 0 ?`${firstNum} has not won in this position.` :occ1Array.length == 1 ? `${firstNum} has only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Count} occurrences.`}`}</p>
                         : null}
-           
+
                     {selectSecondNum ?
-                        <p style={occurrenceTextStyle}>{occ1Array.length}</p>
+                        <p style={occurrenceTextStyle}>{occ2Array.length}</p>
                         : null}
                     {selectThirdNum ?
                         <p style={occurrenceTextStyle}>{occ3Array.length}</p>
@@ -541,13 +521,9 @@ const Generator = () => {
                         setOcc4Array([]);
                         setOcc5Array([]);
                         setOcc6Array([]);
-
                     };
-
                     setGeneratorToggle(true);
-                    // fetchWinningNum();
                     changeRandom();
-
                 }}>Generate!</button>
             {/* //.map Winning Results + Occurrence Function For The Selected Ball-------------------------------------------------------------------------------------------------> */}
             {mapNLog()}
