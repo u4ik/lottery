@@ -349,6 +349,7 @@ const Generator = () => {
             setSelectSecondNum(false);
             setSelectThirdNum(false);
             setSelectFourthNum(false);
+            setSelectFifthNum(false);
             setSelectMBallNum(false);
 
             setBallSelectHighlight1('drop-shadow(0px 15px 4px #EE1D25)');
