@@ -163,11 +163,11 @@ const Generator = () => {
         };
         //Random # Set Generator---------------------------------------------------------------------------------------------->
         function changeRandom() {
-            setFirstNum(randomNumber(1, 76).toString());
-            setSecondNum(randomNumber(1, 76).toString());
-            setThirdNum(randomNumber(1, 76).toString());
-            setFourthNum(randomNumber(1, 76).toString());
-            setFifthNum(randomNumber(1, 76).toString());
+            setFirstNum(randomNumber(1, 71).toString());
+            setSecondNum(randomNumber(1, 71).toString());
+            setThirdNum(randomNumber(1, 71).toString());
+            setFourthNum(randomNumber(1, 71).toString());
+            setFifthNum(randomNumber(1, 71).toString());
             setMBallNum(randomNumber(1, 26).toString());
         };
         //Occurrence Function------------------------------------------------------------------------------------------------->
