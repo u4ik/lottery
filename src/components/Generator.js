@@ -9,6 +9,8 @@ const Generator = () => {
     const [mBallNum, setMBallNum] = useState('6');
     //! Next Jackpot (NOT IN USE)
     const [nextJackpot, setNextJackpot] = useState('');
+    //! Ball Is Selected
+    const [ballSelected, setBallSelected] = useState(false);
     //! Selecting Number Via. Click----------------------------------------------------------------------------------------->
     const [selectFirstNum, setSelectFirstNum] = useState(false);
     const [selectSecondNum, setSelectSecondNum] = useState(false);
@@ -333,6 +335,8 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+
+        setBallSelected(true);
     };
     const selectSecondBall = () => {
         setSelectFirstNum(false);
@@ -356,6 +360,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+        setBallSelected(true);
     }
     const selectThirdBall = () => {
         setSelectFirstNum(false);
@@ -378,6 +383,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+        setBallSelected(true);
     }
     const selectFourthBall = () => {
         setSelectFirstNum(false);
@@ -400,6 +406,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+        setBallSelected(true);
     }
     const selectFifthBall = () => {
         setSelectFirstNum(false);
@@ -422,6 +429,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+        setBallSelected(true);
     }
     const selectMBall = () => {
         setSelectFirstNum(false);
@@ -444,6 +452,8 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
+
+        setBallSelected(true);
 
     }
     return (
@@ -468,7 +478,7 @@ const Generator = () => {
             </div>
             { /* //! Occurrence Count Display----------------------------------------------------------------------------------> */}
             {generatorToggle ?
-                <div >
+                <div style={{ minHeight: ballSelected ? '25vh' : '', display: 'flex', alignSelf: 'center', justifyContent: 'center', alignItems: 'center' }} >
                     {selectFirstNum ?
                         <p style={occurrenceTextStyle} > {`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has had only ${occ1Array.length} winning occurrence in this position.` : `${firstNum} has had ${occ1Array.length} winning occurrences in this position.`}`}</p>
                         : null}
@@ -494,7 +504,7 @@ const Generator = () => {
             {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
             {/* All Balls Being Displayed w/ OnClicks */}
             {generatorToggle ?
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '1vw', width: '100vw', }}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '', width: '100vw', }}>
                     {/* //! Lotto Balls-------------------------------------------------------------------------------------------------> */}
                     {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
