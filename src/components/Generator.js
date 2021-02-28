@@ -19,7 +19,7 @@ const Generator = () => {
     //! All Winning #'s Stored In This Array-------------------------------------------------------------------------------->
     const [winningNumArr, setWinningNumArr] = useState([]);
     //! Displays Content and Random #'s Once User Clicks The 'Generate Button!'--------------------------------------------->
-    const [generatorToggle, setGeneratorToggle] = useState(true);
+    const [generatorToggle, setGeneratorToggle] = useState(false);
     //!Occurrence Array Built For Each Selected Ball----------------------------------------------------------------------->
     const [occ1Array, setOcc1Array] = useState([]);
     const [occ2Array, setOcc2Array] = useState([]);
@@ -92,7 +92,8 @@ const Generator = () => {
     const oddsTextStyle = {
         color: 'white',
         fontSize: '2rem',
-        textShadow: '2px 2px 1px black'
+        textShadow: '2px 2px 1px black',
+        userSelect:'none'
     };
     const ballDescTextStyle = {
         color: 'white',
@@ -454,7 +455,10 @@ const Generator = () => {
             </div >
             <div>
                 <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
-                <p style={{ fontSize: '1em', color: 'white' }} > Good Luck!</p>
+                <p style={{ fontSize: '1em', color: 'white',userSelect:'none' }} > Good Luck!</p>
+                {generatorToggle === true && !selectFirstNum && !selectSecondNum && !selectThirdNum && !selectFourthNum && !selectFifthNum && !selectMBallNum ?
+                <p style={{ fontSize: '1em', color: 'white' }} > Click a ball to view past winning history.</p>
+           :null }
             </div>
             { /* //! Occurrence Count Display----------------------------------------------------------------------------------> */}
             {generatorToggle ?
@@ -576,7 +580,7 @@ const Generator = () => {
                 }}>Generate!</button>
             {/* //! .map Winning Results + Occurrence Function For The Selected Ball----------------------------------------------> */}
             {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0 ? <p style={winningDatesText}>Winning Dates:</p> : null}
-            <div style={{marginLeft:'auto',marginRight:'auto'}}>
+            <div style={{marginLeft:'5%',marginRight:'5%'}}>
             {mapNLog()}
             </div>
             {/* //! iFrame Past Winning # Set-------------------------------------------------------------------------------------------------> */}
