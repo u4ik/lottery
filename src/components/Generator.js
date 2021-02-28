@@ -19,7 +19,7 @@ const Generator = () => {
     //! All Winning #'s Stored In This Array-------------------------------------------------------------------------------->
     const [winningNumArr, setWinningNumArr] = useState([]);
     //! Displays Content and Random #'s Once User Clicks The 'Generate Button!'--------------------------------------------->
-    const [generatorToggle, setGeneratorToggle] = useState(true);
+    const [generatorToggle, setGeneratorToggle] = useState(false);
     //!Occurrence Array Built For Each Selected Ball----------------------------------------------------------------------->
     const [occ1Array, setOcc1Array] = useState([]);
     const [occ2Array, setOcc2Array] = useState([]);
@@ -144,8 +144,8 @@ const Generator = () => {
     }
     const occurrenceTextStyle = {
         color: 'white',
-        fontSize: '4rem',
-        textShadow: '3.5px 3.5px 1px black'
+        fontSize: '3em',
+        textShadow: '1.5px 1.5px 1px black'
     };
     const oddsTextStyle = {
         color: 'white',
@@ -170,7 +170,7 @@ const Generator = () => {
         fontWeight: 'bold'
     };
     //! Random # Generator Within Bounds------------------------------------------------------------------------------------>
-    function randomNumber(min, max) {
+    const randomNumber = (min, max) => {
         let randNum = Math.floor(Math.random() * (max - min) + min);
         if (randNum < 10) {
             let newNumWithZero = '0' + randNum.toString();
@@ -182,7 +182,7 @@ const Generator = () => {
         }
     };
     //! Random # Set Generator---------------------------------------------------------------------------------------------->
-    function changeRandom() {
+    const changeRandom =() => {
         setFirstNum(randomNumber(1, 71).toString());
         setSecondNum(randomNumber(1, 71).toString());
         setThirdNum(randomNumber(1, 71).toString());
@@ -191,7 +191,7 @@ const Generator = () => {
         setMBallNum(randomNumber(1, 26).toString());
     };
     //! Occurrence Function------------------------------------------------------------------------------------------------->
-    function occurrence(winning) {
+    const occurrence = (winning) => {
         if (selectFirstNum) {
             if (firstNum == winning.winning_numbers.slice(0, 2)) {
                 if (occ1Count >= 0) {
@@ -269,7 +269,7 @@ const Generator = () => {
         }))
     };
     //! Winning Results .map Function--------------------------------------------------------------------------------------->
-    function mapNLog() {
+    const mapNLog = ()=> {
         return winningNumArr.map((winning, index) => {
             //! If All Random #'s Match
             if (formattedRandomNumSpace.replace(/\s/g, '') === (winning.winning_numbers.replace(/\s/g, '') + winning.mega_ball.replace(/\s/g, '')).replace(/\s/g, '')) {
@@ -471,7 +471,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
-    }
+    } 
     const selectMBall = () => {
         setSelectFirstNum(false);
         setSelectSecondNum(false);
