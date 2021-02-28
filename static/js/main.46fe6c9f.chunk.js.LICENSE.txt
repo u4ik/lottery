@@ -2,14 +2,10 @@
 
 //! Executing the Occurrence Function If A Ball Is Selected
 
-//! Fetch Winning Results Function-------------------------------------------------------------------------------------->
-
 //! If All Random #'s Match
 
-//! Occurrence Function------------------------------------------------------------------------------------------------->
-
-//! Random # Generator Within Bounds------------------------------------------------------------------------------------>
-
 //! Returning All Occurrences And Display Date For The Selected Number
+
+//! Winning Results .map Function--------------------------------------------------------------------------------------->
 
 //! useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------->
