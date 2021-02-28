@@ -19,7 +19,7 @@ const Generator = () => {
     //! All Winning #'s Stored In This Array-------------------------------------------------------------------------------->
     const [winningNumArr, setWinningNumArr] = useState([]);
     //! Displays Content and Random #'s Once User Clicks The 'Generate Button!'--------------------------------------------->
-    const [generatorToggle, setGeneratorToggle] = useState(false);
+    const [generatorToggle, setGeneratorToggle] = useState(true);
     //!Occurrence Array Built For Each Selected Ball----------------------------------------------------------------------->
     const [occ1Array, setOcc1Array] = useState([]);
     const [occ2Array, setOcc2Array] = useState([]);
@@ -50,89 +50,30 @@ const Generator = () => {
     let fontSize = '8rem';
     //! CSS Styles---------------------------------------------------------------------------------------------------------->
     const lottoNum1 = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'white',
-        background: 'radial-gradient(circle at top left, white 10%,darkgrey 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight1,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const lottoNum2 = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'white',
-        background: 'radial-gradient(circle at top left, white 10%,darkgrey 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight2,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const lottoNum3 = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'white',
-        background: 'radial-gradient(circle at top left, white 10%,darkgrey 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight3,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const lottoNum4 = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'white',
-        background: 'radial-gradient(circle at top left, white 10%,darkgrey 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight4,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const lottoNum5 = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'white',
-        background: 'radial-gradient(circle at top left, white 10%,darkgrey 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight5,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const lottoNumMBall = {
-        fontSize: fontSize,
-        fontWeight: '550',
-        //backgroundColor: 'yellow',
-        background: 'radial-gradient(circle at top left, white 5%,yellow 100%)',
-        borderRadius: '50%',
-        padding: '4%',
-        minWidth: '200px',
-        minHeight: '200px',
         filter: ballSelectHighLight6,
-        userSelect: 'none',
-        cursor:'pointer'
     };
     const dash = {
-        fontSize: fontSize,
+        fontSize: '1em',
         color: 'white',
         filter: 'drop-shadow(2px 2px 1px black)',
-        padding: '5.5%',
-        marginTop: '4%'
+        // padding: '5.5%',
+        // marginTop: '5%',
+        display: 'none'
     };
     const numHasWonStyle = {
         color: 'white',
@@ -140,11 +81,12 @@ const Generator = () => {
     };
     const winningDatesText = {
         color: 'white',
-        fontSize: '2.5rem'
+        fontSize: '2rem',
+        userSelect:'none'
     }
     const occurrenceTextStyle = {
         color: 'white',
-        fontSize: '3em',
+        fontSize: '2em',
         textShadow: '1.5px 1.5px 1px black'
     };
     const oddsTextStyle = {
@@ -154,20 +96,26 @@ const Generator = () => {
     };
     const ballDescTextStyle = {
         color: 'white',
-        fontSize: '2rem',
+        // fontSize: '2rem',
         textShadow: '2px 2px 2px black',
         fontWeight: '700',
-        marginTop: '-45%'
+        // marginTop: '-45%',
+        // marginBlockStart:'0 !important',
+        // marginBlockEnd:'0 !important'
+        // margin:'none !important'
     };
     const oddTextStyle = {
         fontSize: '2rem',
         color: 'red',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textShadow: '2px 2px 2px black',
+
     };
     const evenTextStyle = {
         fontSize: '2rem',
         color: 'limegreen',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textShadow: '2px 2px 2px black',
     };
     //! Random # Generator Within Bounds------------------------------------------------------------------------------------>
     const randomNumber = (min, max) => {
@@ -182,7 +130,7 @@ const Generator = () => {
         }
     };
     //! Random # Set Generator---------------------------------------------------------------------------------------------->
-    const changeRandom =() => {
+    const changeRandom = () => {
         setFirstNum(randomNumber(1, 71).toString());
         setSecondNum(randomNumber(1, 71).toString());
         setThirdNum(randomNumber(1, 71).toString());
@@ -269,7 +217,7 @@ const Generator = () => {
         }))
     };
     //! Winning Results .map Function--------------------------------------------------------------------------------------->
-    const mapNLog = ()=> {
+    const mapNLog = () => {
         return winningNumArr.map((winning, index) => {
             //! If All Random #'s Match
             if (formattedRandomNumSpace.replace(/\s/g, '') === (winning.winning_numbers.replace(/\s/g, '') + winning.mega_ball.replace(/\s/g, '')).replace(/\s/g, '')) {
@@ -353,6 +301,7 @@ const Generator = () => {
     const fetchWinningNum = async () => {
         let response = await fetch('https://data.ny.gov/resource/5xaw-6ayf.json')
         let data = await response.json();
+        console.log(data)
         setWinningNumArr(data);
     };
     //! useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------->
@@ -398,7 +347,7 @@ const Generator = () => {
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
-        
+
         setOcc1Array([]);
         setOcc2Array([]);
         setOcc3Array([]);
@@ -471,7 +420,7 @@ const Generator = () => {
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
-    } 
+    }
     const selectMBall = () => {
         setSelectFirstNum(false);
         setSelectSecondNum(false);
@@ -495,123 +444,148 @@ const Generator = () => {
         setOcc6Array([]);
 
     }
-    return (<div style={{ margin: '0 auto', paddingTop: '5vh' }}>
-        { /* //! iFrame Current Jackpot-----------------------------------------------------------------------------------> */}
-        <div style={{ top: '6vh', left: '6vw', border: '0px solid rgb(201, 0, 1)', borderRadius: '20px', overflow: 'hidden', margin: '0px auto', maxWidth: '800px', maxHeight: '600px', marginBottom: '15%', filter: 'drop-shadow(1px 1px 1px black)', position: 'fixed', transform: 'scale(.6)', zIndex: 2 }} >
-            {/* <iframe title = 'Draw Counter'scrolling = "no"src = "https://lottery.com/"style = {{ border: '0px none', marginLeft: '-360px', height: '400px', marginBottom: '', marginTop: '-290px', width: '770px' }} >
+    return (
+        <div style={{ margin: '0 auto', paddingTop: '' }}>
+
+            { /* //! iFrame Current Jackpot-----------------------------------------------------------------------------------> */}
+            <div style={{ top: '6vh', left: '6vw', border: '0px solid rgb(201, 0, 1)', borderRadius: '20px', overflow: 'hidden', margin: '0px auto', maxWidth: '800px', maxHeight: '600px', marginBottom: '15%', filter: 'drop-shadow(1px 1px 1px black)', position: 'fixed', transform: 'scale(.6)', zIndex: 2 }} >
+                {/* <iframe title = 'Draw Counter'scrolling = "no"src = "https://lottery.com/"style = {{ border: '0px none', marginLeft: '-360px', height: '400px', marginBottom: '', marginTop: '-290px', width: '770px' }} >
                 </iframe>  */}
-        </div >
-        <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
-        { /* //! Occurrence Count Dispaly----------------------------------------------------------------------------------> */}
-        {generatorToggle ?
-            <div >
-                {selectFirstNum ?
-                    <p style={occurrenceTextStyle} > {`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has had only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
-                    : null}
-
-                {selectSecondNum ?
-                    <p style={occurrenceTextStyle}>{`Ball #2: ` + `${occ2Array.length == 0 ? `${secondNum} has not won in this position.` : occ2Array.length == 1 ? `${secondNum} has had only ${occ2Array.length} occurrence.` : `${secondNum} has had ${occ2Array.length} occurrences.`}`}</p>
-                    : null}
-                {selectThirdNum ?
-                    <p style={occurrenceTextStyle}>{`Ball #3: ` + `${occ3Array.length == 0 ? `${thirdNum} has not won in this position.` : occ3Array.length == 1 ? `${thirdNum} has had only ${occ3Array.length} occurrence.` : `${thirdNum} has had ${occ3Array.length} occurrences.`}`}</p>
-                    : null}
-                {selectFourthNum ?
-                    <p style={occurrenceTextStyle}>{`Ball #4: ` + `${occ4Array.length == 0 ? `${fourthNum} has not won in this position.` : occ4Array.length == 1 ? `${fourthNum} has had only ${occ4Array.length} occurrence.` : `${fourthNum} has had ${occ4Array.length} occurrences.`}`}</p>
-                    : null}
-                {selectFifthNum ?
-                    <p style={occurrenceTextStyle}>{`Ball #5: ` + `${occ5Array.length == 0 ? `${fifthNum} has not won in this position.` : occ5Array.length == 1 ? `${fifthNum} has had only ${occ5Array.length} occurrence.` : `${fifthNum} has had ${occ5Array.length} occurrences.`}`}</p>
-                    : null}
-                {selectMBallNum ?
-                    <p style={occurrenceTextStyle}>{`MBall #6: ` + `${occ6Array.length == 0 ? `${mBallNum} has not won in this position.` : occ6Array.length == 1 ? `${mBallNum} has had only ${occ6Array.length} occurrence.` : `${mBallNum} has had ${occ6Array.length} occurrences.`}`}</p>
-                    : null}
+            </div >
+            <div>
+                <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
+                <p style={{ fontSize: '1em', color: 'white' }} > Good Luck!</p>
             </div>
-            : null}
-        {/* //! Current Random # Set Displayed----------------------------------------------------------------------------> */}
-        {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
-        {/* All Balls Being Displayed w/ OnClicks */}
-        {generatorToggle ?
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flexWrap: '', transform: 'scale(.6)', marginTop: '-15%' }}>
-                {/* //! Lotto Balls-------------------------------------------------------------------------------------------------> */}
-                {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNum1} onClick={() => {
-                        
-                        selectFirstBall();
+            { /* //! Occurrence Count Display----------------------------------------------------------------------------------> */}
+            {generatorToggle ?
+                <div >
+                    {selectFirstNum ?
+                        <p style={occurrenceTextStyle} > {`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has had only ${occ1Array.length} winning occurrence in this position.` : `${firstNum} has had ${occ1Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
 
-                    }}>{firstNum}</p>
-                    <p style={ballDescTextStyle}>Ball #1</p>
-                    {firstNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
+                    {selectSecondNum ?
+                        <p style={occurrenceTextStyle}>{`Ball #2: ` + `${occ2Array.length == 0 ? `${secondNum} has not won in this position.` : occ2Array.length == 1 ? `${secondNum} has had only ${occ2Array.length} winning occurrence in this position.` : `${secondNum} has had ${occ2Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
+                    {selectThirdNum ?
+                        <p style={occurrenceTextStyle}>{`Ball #3: ` + `${occ3Array.length == 0 ? `${thirdNum} has not won in this position.` : occ3Array.length == 1 ? `${thirdNum} has had only ${occ3Array.length} winning occurrence in this position.` : `${thirdNum} has had ${occ3Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
+                    {selectFourthNum ?
+                        <p style={occurrenceTextStyle}>{`Ball #4: ` + `${occ4Array.length == 0 ? `${fourthNum} has not won in this position.` : occ4Array.length == 1 ? `${fourthNum} has had only ${occ4Array.length} winning occurrence in this position.` : `${fourthNum} has had ${occ4Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
+                    {selectFifthNum ?
+                        <p style={occurrenceTextStyle}>{`Ball #5: ` + `${occ5Array.length == 0 ? `${fifthNum} has not won in this position.` : occ5Array.length == 1 ? `${fifthNum} has had only ${occ5Array.length} winning occurrence in this position.` : `${fifthNum} has had ${occ5Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
+                    {selectMBallNum ?
+                        <p style={occurrenceTextStyle}>{`MBall #6: ` + `${occ6Array.length == 0 ? `${mBallNum} has not won in this position.` : occ6Array.length == 1 ? `${mBallNum} has had only ${occ6Array.length} winning occurrence in this position.` : `${mBallNum} has had ${occ6Array.length} winning occurrences in this position.`}`}</p>
+                        : null}
                 </div>
-                <p style={dash}>-</p>
-                {/* //! Second Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNum2} onClick={() => {
-                        selectSecondBall();
-                    }}>{secondNum}</p>
-                    <p style={ballDescTextStyle}>Ball #2</p>
-                    {secondNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
+                : null}
+            {/* //! Current Random # Set Displayed----------------------------------------------------------------------------> */}
+            {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
+            {/* All Balls Being Displayed w/ OnClicks */}
+            {generatorToggle ?
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '1vw', width: '100vw',}}>
+                    {/* //! Lotto Balls-------------------------------------------------------------------------------------------------> */}
+                    {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%' }}>
+                        <div style={lottoNum1}  className='balls'>
+                            <p className='ballText' onClick={() => {
+
+                                selectFirstBall();
+
+                            }}>{firstNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #1</p>
+                        {firstNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+                    </div>
+                    <p style={dash}>-</p>
+                    {/* //! Second Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
+                        <div style={lottoNum2}  className='balls'>
+                            <p className='ballText' onClick={() => {
+                                selectSecondBall();
+                            }}>{secondNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #2</p>
+                        {secondNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+
+                    </div>
+                    <p style={dash}>-</p>
+                    {/* //! Third Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,margin:'1%' }}>
+                        <div  style={lottoNum3} className='balls'>
+                            <p className='ballText' onClick={() => {
+                                selectThirdBall();
+                            }}>{thirdNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #3</p>
+                        {thirdNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+
+                    </div>
+                    <p style={dash}>-</p>
+                    {/* //! Fourth Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
+                        <div style={lottoNum4}  className='balls'>
+                            <p className='ballText' onClick={() => {
+                                selectFourthBall();
+                            }} >{fourthNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #4</p>
+                        {fourthNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+
+                    </div>
+                    <p style={dash}>-</p>
+                    {/* //! Fifth Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
+                        <div style={lottoNum5} className='balls'>
+                            <p  className='ballText' onClick={() => {
+                                selectFifthBall();
+                            }} >{fifthNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #5</p>
+                        {fifthNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+
+                    </div>
+                    <p style={dash}>-</p>
+                    {/* //! Mega Ball-------------------------------------------------------------------------------------------------> */}
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
+                        <div  style={lottoNumMBall} className='balls'>
+                            <p className='ballText' onClick={() => {
+                                selectMBall();
+                            }}>{mBallNum}</p>
+                        </div>
+                        <p style={ballDescTextStyle} className='ballDesc'>Ball #6</p>
+                        {mBallNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
+
+                    </div>
                 </div>
-                <p style={dash}>-</p>
-                {/* //! Third Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNum3} onClick={() => {
-                        selectThirdBall();
-                    }}>{thirdNum}</p>
-                    <p style={ballDescTextStyle}>Ball #3</p>
-                    {thirdNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
-                </div>
-                <p style={dash}>-</p>
-                {/* //! Fourth Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNum4} onClick={() => {
-                        selectFourthBall();
-                    }} >{fourthNum}</p>
-                    <p style={ballDescTextStyle}>Ball #4</p>
-                    {fourthNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
-                </div>
-                <p style={dash}>-</p>
-                {/* //! Fifth Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNum5} onClick={() => {
-                        selectFifthBall();
-                    }} >{fifthNum}</p>
-                    <p style={ballDescTextStyle}>Ball #5</p>
-                    {fifthNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
-                </div>
-                <p style={dash}>-</p>
-                {/* //! Mega Ball-------------------------------------------------------------------------------------------------> */}
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <p style={lottoNumMBall} onClick={() => {
-                        selectMBall();
-                    }}>{mBallNum}</p>
-                    <p style={ballDescTextStyle}>MBall #6</p>
-                    {mBallNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
-                </div>
+                : null};
+            {/* //! Generate Button---------------------------------------------------------------------------------------------> */}
+            <button style={{}}
+                onClick={() => {
+                    if (occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0) {
+                        setOcc1Array([]);
+                        setOcc2Array([]);
+                        setOcc3Array([]);
+                        setOcc4Array([]);
+                        setOcc5Array([]);
+                        setOcc6Array([]);
+                    };
+                    setGeneratorToggle(true);
+                    changeRandom();
+                }}>Generate!</button>
+            {/* //! .map Winning Results + Occurrence Function For The Selected Ball----------------------------------------------> */}
+            {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0 ? <p style={winningDatesText}>Winning Dates:</p> : null}
+            <div style={{marginLeft:'auto',marginRight:'auto'}}>
+            {mapNLog()}
             </div>
-            : null};
-        {/* //! Generate Button---------------------------------------------------------------------------------------------> */}
-        <button style={{ fontSize: '2rem', marginBottom: '4%', marginTop: '-10%', backgroundColor: 'rgba(255, 255, 255, .8)', color: 'black', borderRadius: '5%', outline: 'none', border: 'solid black 5px', padding: '2%', textShadow: '.5px .5px .5px blue', fontWeight: '550' }}
-            onClick={() => {
-                if (occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0) {
-                    setOcc1Array([]);
-                    setOcc2Array([]);
-                    setOcc3Array([]);
-                    setOcc4Array([]);
-                    setOcc5Array([]);
-                    setOcc6Array([]);
-                };
-                setGeneratorToggle(true);
-                changeRandom();
-            }}>Generate!</button>
-        {/* //! .map Winning Results + Occurrence Function For The Selected Ball----------------------------------------------> */}
-        {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0 ? <p style={winningDatesText}>Winning Dates:</p> : null}
-        {mapNLog()}
-        {/* //! iFrame Past Winning # Set-------------------------------------------------------------------------------------------------> */}
-        <div style={{ border: '0px solid rgb(201, 0, 1)', borderRadius: '10%', overflow: 'hidden', margin: '0px auto', maxWidth: '580px', maxHeight: '600px', marginBottom: '2%' }}>
-            {/* <iframe title="Last Winning #'s" scrolling="no" src="https://www.lottery.net/mega-millions/numbers" style={{ border: '0px none', marginLeft: '-570px', height: '469px', marginBottom: '', marginTop: '-340px', width: '1500px' }}>
+            {/* //! iFrame Past Winning # Set-------------------------------------------------------------------------------------------------> */}
+            <div style={{ border: '0px solid rgb(201, 0, 1)', borderRadius: '10%', overflow: 'hidden', margin: '0px auto', maxWidth: '580px', maxHeight: '600px', marginBottom: '2%' }}>
+                {/* <iframe title="Last Winning #'s" scrolling="no" src="https://www.lottery.net/mega-millions/numbers" style={{ border: '0px none', marginLeft: '-570px', height: '469px', marginBottom: '', marginTop: '-340px', width: '1500px' }}>
                 </iframe> */}
+            </div>
         </div>
-    </div>
+
     )
 };
 
