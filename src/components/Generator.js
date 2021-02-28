@@ -320,7 +320,7 @@ const Generator = () => {
         setSelectFifthNum(false);
         setSelectMBallNum(false);
 
-        setBallSelectHighlight1('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight1('drop-shadow(0px 7px 4px #1a17ce)');
         setBallSelectHighlight2('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight3('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight4('drop-shadow(5px 5px 4px black)');
@@ -343,7 +343,7 @@ const Generator = () => {
         setSelectMBallNum(false);
 
         setBallSelectHighlight1('drop-shadow(5px 5px 4px black)');
-        setBallSelectHighlight2('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight2('drop-shadow(0px 7px 4px #1a17ce)');
         setBallSelectHighlight3('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight4('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
@@ -367,7 +367,7 @@ const Generator = () => {
 
         setBallSelectHighlight1('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight2('drop-shadow(5px 5px 4px black)');
-        setBallSelectHighlight3('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight3('drop-shadow(0px 7px 4px #1a17ce)');
         setBallSelectHighlight4('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
@@ -390,7 +390,7 @@ const Generator = () => {
         setBallSelectHighlight1('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight2('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight3('drop-shadow(5px 5px 4px black)');
-        setBallSelectHighlight4('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight4('drop-shadow(0px 7px 4px #1a17ce)');
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
@@ -413,7 +413,7 @@ const Generator = () => {
         setBallSelectHighlight2('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight3('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight4('drop-shadow(5px 5px 4px black)');
-        setBallSelectHighlight5('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight5('drop-shadow(0px 7px 4px #1a17ce)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
         setOcc1Array([]);
@@ -436,7 +436,7 @@ const Generator = () => {
         setBallSelectHighlight3('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight4('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
-        setBallSelectHighlight6('drop-shadow(0px 15px 4px #EE1D25)');
+        setBallSelectHighlight6('drop-shadow(0px 7px 4px #1a17ce)');
 
         setOcc1Array([]);
         setOcc2Array([]);
