@@ -46,6 +46,12 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
+.balls:nth-child(4) {
+    border-radius: 900px !important;
+    background: radial-gradient(circle at top left, yellow 50%, darkgrey 100%);
+    font-size: 4500px !important;
+}
+
 .balls {
     background: radial-gradient(circle at top left, white 10%, darkgrey 100%);
     border-radius: 50%;

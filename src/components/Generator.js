@@ -66,6 +66,7 @@ const Generator = () => {
     };
     const lottoNumMBall = {
         filter: ballSelectHighLight6,
+        background: 'radial-gradient(circle at bottom right, yellow 15%, darkgrey 100%)'
     };
     const dash = {
         fontSize: '1em',
@@ -82,7 +83,7 @@ const Generator = () => {
     const winningDatesText = {
         color: 'white',
         fontSize: '2rem',
-        userSelect:'none'
+        userSelect: 'none'
     }
     const occurrenceTextStyle = {
         color: 'white',
@@ -93,7 +94,7 @@ const Generator = () => {
         color: 'white',
         fontSize: '2rem',
         textShadow: '2px 2px 1px black',
-        userSelect:'none'
+        userSelect: 'none'
     };
     const ballDescTextStyle = {
         color: 'white',
@@ -454,11 +455,16 @@ const Generator = () => {
                 </iframe>  */}
             </div >
             <div>
-                <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
-                <p style={{ fontSize: '1em', color: 'white',userSelect:'none' }} > Good Luck!</p>
+                {!generatorToggle ?
+                    <>
+                        <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
+                        <p style={{ fontSize: '1em', color: 'white', userSelect: 'none' }} > Good Luck!</p>
+                    </>
+                    : null}
+
                 {generatorToggle === true && !selectFirstNum && !selectSecondNum && !selectThirdNum && !selectFourthNum && !selectFifthNum && !selectMBallNum ?
-                <p style={{ fontSize: '1em', color: 'white' }} > Click a ball to view past winning history.</p>
-           :null }
+                    <p style={{ fontSize: '1em', color: 'white' }} > Click a ball to view past winning history.</p>
+                    : null}
             </div>
             { /* //! Occurrence Count Display----------------------------------------------------------------------------------> */}
             {generatorToggle ?
@@ -488,11 +494,11 @@ const Generator = () => {
             {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
             {/* All Balls Being Displayed w/ OnClicks */}
             {generatorToggle ?
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '1vw', width: '100vw',}}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '1vw', width: '100vw', }}>
                     {/* //! Lotto Balls-------------------------------------------------------------------------------------------------> */}
                     {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%' }}>
-                        <div style={lottoNum1}  className='balls'>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
+                        <div style={lottoNum1} className='balls'>
                             <p className='ballText' onClick={() => {
 
                                 selectFirstBall();
@@ -504,8 +510,8 @@ const Generator = () => {
                     </div>
                     <p style={dash}>-</p>
                     {/* //! Second Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
-                        <div style={lottoNum2}  className='balls'>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
+                        <div style={lottoNum2} className='balls'>
                             <p className='ballText' onClick={() => {
                                 selectSecondBall();
                             }}>{secondNum}</p>
@@ -516,8 +522,8 @@ const Generator = () => {
                     </div>
                     <p style={dash}>-</p>
                     {/* //! Third Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,margin:'1%' }}>
-                        <div  style={lottoNum3} className='balls'>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
+                        <div style={lottoNum3} className='balls'>
                             <p className='ballText' onClick={() => {
                                 selectThirdBall();
                             }}>{thirdNum}</p>
@@ -528,8 +534,8 @@ const Generator = () => {
                     </div>
                     <p style={dash}>-</p>
                     {/* //! Fourth Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
-                        <div style={lottoNum4}  className='balls'>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
+                        <div style={lottoNum4} className='balls'>
                             <p className='ballText' onClick={() => {
                                 selectFourthBall();
                             }} >{fourthNum}</p>
@@ -540,9 +546,9 @@ const Generator = () => {
                     </div>
                     <p style={dash}>-</p>
                     {/* //! Fifth Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
                         <div style={lottoNum5} className='balls'>
-                            <p  className='ballText' onClick={() => {
+                            <p className='ballText' onClick={() => {
                                 selectFifthBall();
                             }} >{fifthNum}</p>
                         </div>
@@ -552,8 +558,8 @@ const Generator = () => {
                     </div>
                     <p style={dash}>-</p>
                     {/* //! Mega Ball-------------------------------------------------------------------------------------------------> */}
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',margin:'1%'  }}>
-                        <div  style={lottoNumMBall} className='balls'>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
+                        <div style={lottoNumMBall} className='balls'>
                             <p className='ballText' onClick={() => {
                                 selectMBall();
                             }}>{mBallNum}</p>
@@ -580,8 +586,8 @@ const Generator = () => {
                 }}>Generate!</button>
             {/* //! .map Winning Results + Occurrence Function For The Selected Ball----------------------------------------------> */}
             {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0 ? <p style={winningDatesText}>Winning Dates:</p> : null}
-            <div style={{marginLeft:'5%',marginRight:'5%'}}>
-            {mapNLog()}
+            <div style={{ marginLeft: '5%', marginRight: '5%' }}>
+                {mapNLog()}
             </div>
             {/* //! iFrame Past Winning # Set-------------------------------------------------------------------------------------------------> */}
             <div style={{ border: '0px solid rgb(201, 0, 1)', borderRadius: '10%', overflow: 'hidden', margin: '0px auto', maxWidth: '580px', maxHeight: '600px', marginBottom: '2%' }}>
