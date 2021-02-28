@@ -336,15 +336,15 @@ const Generator = () => {
         });
     };
     const fetchNextJackpot = async () => {
-        fetch('https://api.collectapi.com/chancegame/usaMegaMillions', {
+        const results = await fetch('https://api.collectapi.com/chancegame/usaMegaMillions', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'apikey 7IXrI9R5a5bmBEspg5bH6x:6zh5128iNgCCSP3wnsckvz'
+                'Authorization': `apikey ${process.env.REACT_APP_API}`
             }
-        })
-            .then(res => res.json())
-            .then(s => console.log(s))
+        });
+        const jsonResults = await results.json();
+        console.log(jsonResults);
     }
     // apikey 7IXrI9R5a5bmBEspg5bH6x:6zh5128iNgCCSP3wnsckvz 
     //Fetch Winning Results Function-------------------------------------------------------------------------------------->
