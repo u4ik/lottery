@@ -7,6 +7,14 @@ body {
     overflow-x: hidden;
 }
 
+@media (min-width:1000px) {
+    .ballWrapper {
+        transform: scale(1.8);
+        margin-top: 2%;
+        margin-bottom: 1%;
+    }
+}
+
 li {
     list-style-type: none;
 }
@@ -44,12 +52,6 @@ button {
     text-shadow: 1px 1px 1px black;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-}
-
-.balls:nth-child(4) {
-    border-radius: 900px !important;
-    background: radial-gradient(circle at top left, yellow 50%, darkgrey 100%);
-    font-size: 4500px !important;
 }
 
 .balls {

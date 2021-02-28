@@ -300,12 +300,14 @@ const Generator = () => {
         });
         const jsonResults = await results.json();
         console.log(jsonResults);
+        setNextJackpot(jsonResults);
     }
+
     //! Fetch Winning Results Function-------------------------------------------------------------------------------------->
     const fetchWinningNum = async () => {
         let response = await fetch('https://data.ny.gov/resource/5xaw-6ayf.json')
         let data = await response.json();
-        console.log(data)
+        // console.log(data)
         setWinningNumArr(data);
     };
     //! useEffect to Fetch Winning Num On Page Load------------------------------------------------------------------------->
@@ -465,6 +467,7 @@ const Generator = () => {
                 </iframe>  */}
             </div >
             <div>
+                {/* <p style={oddsTextStyle} >{nextJackpot.result ? "Next Jackpot: "+nextJackpot.result['next-jackpot'].amount : null}</p> */}
                 {!generatorToggle ?
                     <>
                         <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
@@ -504,16 +507,16 @@ const Generator = () => {
             {/* {generatorToggle ? <p style={occurrenceTextStyle}>{formattedRandomNumDash}</p> : null} */}
             {/* All Balls Being Displayed w/ OnClicks */}
             {generatorToggle ?
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '', width: '100vw', }}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', transform: '', marginTop: '', width: '100vw' }} className='ballWrapper'>
                     {/* //! Lotto Balls-------------------------------------------------------------------------------------------------> */}
                     {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNum1} className='balls'>
-                            <p className='ballText' onClick={() => {
+                        <div style={lottoNum1} className='balls' onClick={() => {
 
-                                selectFirstBall();
+                            selectFirstBall();
 
-                            }}>{firstNum}</p>
+                        }}>
+                            <p className='ballText' >{firstNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #1</p>
                         {firstNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
@@ -521,10 +524,10 @@ const Generator = () => {
                     <p style={dash}>-</p>
                     {/* //! Second Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNum2} className='balls'>
-                            <p className='ballText' onClick={() => {
-                                selectSecondBall();
-                            }}>{secondNum}</p>
+                        <div style={lottoNum2} className='balls' onClick={() => {
+                            selectSecondBall();
+                        }}>
+                            <p className='ballText' >{secondNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #2</p>
                         {secondNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
@@ -533,10 +536,10 @@ const Generator = () => {
                     <p style={dash}>-</p>
                     {/* //! Third Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNum3} className='balls'>
-                            <p className='ballText' onClick={() => {
-                                selectThirdBall();
-                            }}>{thirdNum}</p>
+                        <div style={lottoNum3} className='balls' onClick={() => {
+                            selectThirdBall();
+                        }}>
+                            <p className='ballText' >{thirdNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #3</p>
                         {thirdNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
@@ -545,10 +548,10 @@ const Generator = () => {
                     <p style={dash}>-</p>
                     {/* //! Fourth Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNum4} className='balls'>
-                            <p className='ballText' onClick={() => {
-                                selectFourthBall();
-                            }} >{fourthNum}</p>
+                        <div style={lottoNum4} className='balls' onClick={() => {
+                            selectFourthBall();
+                        }}>
+                            <p className='ballText'  >{fourthNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #4</p>
                         {fourthNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
@@ -557,10 +560,10 @@ const Generator = () => {
                     <p style={dash}>-</p>
                     {/* //! Fifth Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNum5} className='balls'>
-                            <p className='ballText' onClick={() => {
-                                selectFifthBall();
-                            }} >{fifthNum}</p>
+                        <div style={lottoNum5} className='balls' onClick={() => {
+                            selectFifthBall();
+                        }}>
+                            <p className='ballText'  >{fifthNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #5</p>
                         {fifthNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
@@ -569,17 +572,17 @@ const Generator = () => {
                     <p style={dash}>-</p>
                     {/* //! Mega Ball-------------------------------------------------------------------------------------------------> */}
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '1%' }}>
-                        <div style={lottoNumMBall} className='balls'>
-                            <p className='ballText' onClick={() => {
-                                selectMBall();
-                            }}>{mBallNum}</p>
+                        <div style={lottoNumMBall} className='balls' onClick={() => {
+                            selectMBall();
+                        }}>
+                            <p className='ballText' >{mBallNum}</p>
                         </div>
                         <p style={ballDescTextStyle} className='ballDesc'>Ball #6</p>
                         {mBallNum % 2 == 0 ? <p style={evenTextStyle} className='evenTextStyle'>Even</p> : <p style={oddTextStyle} className='oddTextStyle'>Odd</p>}
 
                     </div>
                 </div>
-                : null};
+                : null}
             {/* //! Generate Button---------------------------------------------------------------------------------------------> */}
             <button style={{}}
                 onClick={() => {
