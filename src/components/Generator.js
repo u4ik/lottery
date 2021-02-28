@@ -59,7 +59,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight1,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const lottoNum2 = {
         fontSize: fontSize,
@@ -71,7 +72,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight2,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const lottoNum3 = {
         fontSize: fontSize,
@@ -83,7 +85,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight3,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const lottoNum4 = {
         fontSize: fontSize,
@@ -95,7 +98,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight4,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const lottoNum5 = {
         fontSize: fontSize,
@@ -107,7 +111,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight5,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const lottoNumMBall = {
         fontSize: fontSize,
@@ -119,7 +124,8 @@ const Generator = () => {
         minWidth: '200px',
         minHeight: '200px',
         filter: ballSelectHighLight6,
-        userSelect: 'none'
+        userSelect: 'none',
+        cursor:'pointer'
     };
     const dash = {
         fontSize: fontSize,
@@ -204,8 +210,6 @@ const Generator = () => {
                     occ2Count++;
                     occ2Array.push(newNum);
                     occ2Count = occ2Array.length;
-                    //console.log(occ2Array);
-
                 };
             };
         };
@@ -245,7 +249,6 @@ const Generator = () => {
                 };
             };
         };
-
         if (selectMBallNum) {
             if (mBallNum == winning.mega_ball) {
                 if (occ6Count >= 0) {
@@ -275,15 +278,15 @@ const Generator = () => {
             return (
                 //! Returning All Occurrences And Display Date For The Selected Number
                 <div key={index} >
-             
+
                     {
                         selectFirstNum ?
                             <div> {firstNum == winning.winning_numbers.slice(0, 2) ?
-                               
+
                                 <ul >
                                     <li style={numHasWonStyle} > The number : {firstNum},
                             has won at the first position on: {winning.draw_date.slice(0, 10)} </li>
-                            </ul > : null
+                                </ul > : null
                             } </div> : null
                     } {
                         selectSecondNum ?
@@ -346,7 +349,6 @@ const Generator = () => {
         const jsonResults = await results.json();
         console.log(jsonResults);
     }
-
     //! Fetch Winning Results Function-------------------------------------------------------------------------------------->
     const fetchWinningNum = async () => {
         let response = await fetch('https://data.ny.gov/resource/5xaw-6ayf.json')
@@ -374,7 +376,7 @@ const Generator = () => {
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
-
+        setOcc1Array([]);
         setOcc2Array([]);
         setOcc3Array([]);
         setOcc4Array([]);
@@ -396,8 +398,9 @@ const Generator = () => {
         setBallSelectHighlight5('drop-shadow(5px 5px 4px black)');
         setBallSelectHighlight6('drop-shadow(5px 5px 4px black)');
 
+        
         setOcc1Array([]);
-
+        setOcc2Array([]);
         setOcc3Array([]);
         setOcc4Array([]);
         setOcc5Array([]);
@@ -420,7 +423,7 @@ const Generator = () => {
 
         setOcc1Array([]);
         setOcc2Array([]);
-
+        setOcc3Array([]);
         setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
@@ -443,7 +446,7 @@ const Generator = () => {
         setOcc1Array([]);
         setOcc2Array([]);
         setOcc3Array([]);
-
+        setOcc4Array([]);
         setOcc5Array([]);
         setOcc6Array([]);
     }
@@ -466,7 +469,7 @@ const Generator = () => {
         setOcc2Array([]);
         setOcc3Array([]);
         setOcc4Array([]);
-
+        setOcc5Array([]);
         setOcc6Array([]);
     }
     const selectMBall = () => {
@@ -489,6 +492,7 @@ const Generator = () => {
         setOcc3Array([]);
         setOcc4Array([]);
         setOcc5Array([]);
+        setOcc6Array([]);
 
     }
     return (<div style={{ margin: '0 auto', paddingTop: '5vh' }}>
@@ -500,7 +504,7 @@ const Generator = () => {
         <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
         { /* //! Occurrence Count Dispaly----------------------------------------------------------------------------------> */}
         {generatorToggle ?
-            <div > 
+            <div >
                 {selectFirstNum ?
                     <p style={occurrenceTextStyle} > {`Ball #1: ` + `${occ1Array.length == 0 ? `${firstNum} has not won in this position.` : occ1Array.length == 1 ? `${firstNum} has had only ${occ1Array.length} occurrence.` : `${firstNum} has had ${occ1Array.length} occurrences.`}`}</p>
                     : null}
@@ -531,7 +535,9 @@ const Generator = () => {
                 {/* //! First Ball-------------------------------------------------------------------------------------------------> */}
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <p style={lottoNum1} onClick={() => {
+                        
                         selectFirstBall();
+
                     }}>{firstNum}</p>
                     <p style={ballDescTextStyle}>Ball #1</p>
                     {firstNum % 2 == 0 ? <p style={evenTextStyle}>Even</p> : <p style={oddTextStyle}>Odd</p>}
@@ -598,7 +604,7 @@ const Generator = () => {
                 changeRandom();
             }}>Generate!</button>
         {/* //! .map Winning Results + Occurrence Function For The Selected Ball----------------------------------------------> */}
-        {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0  ? <p style={winningDatesText}>Winning Dates:</p> :null}
+        {occ1Array.length > 0 || occ2Array.length > 0 || occ3Array.length > 0 || occ4Array.length > 0 || occ5Array.length > 0 || occ6Array.length > 0 ? <p style={winningDatesText}>Winning Dates:</p> : null}
         {mapNLog()}
         {/* //! iFrame Past Winning # Set-------------------------------------------------------------------------------------------------> */}
         <div style={{ border: '0px solid rgb(201, 0, 1)', borderRadius: '10%', overflow: 'hidden', margin: '0px auto', maxWidth: '580px', maxHeight: '600px', marginBottom: '2%' }}>
