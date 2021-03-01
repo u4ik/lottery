@@ -472,6 +472,7 @@ const Generator = () => {
                 {/* <p style={oddsTextStyle} >{nextJackpot.result ? "Next Jackpot: "+nextJackpot.result['next-jackpot'].amount : null}</p> */}
                 {!generatorToggle ?
                     <>
+                       <p style={oddsTextStyle} > Welcome to the MegaMillions # generator and past history checker. </p>
                         <p style={oddsTextStyle} > Odds: 1 in 302, 575, 350. </p>
                         <p style={{ fontSize: '1em', color: 'white', userSelect: 'none' }} > Good Luck!</p>
                     </>
