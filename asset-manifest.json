@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/lottery/static/css/main.f25ce508.chunk.css",
-    "main.js": "/lottery/static/js/main.1e77e9eb.chunk.js",
-    "main.js.map": "/lottery/static/js/main.1e77e9eb.chunk.js.map",
+    "main.js": "/lottery/static/js/main.5f3854ed.chunk.js",
+    "main.js.map": "/lottery/static/js/main.5f3854ed.chunk.js.map",
     "runtime-main.js": "/lottery/static/js/runtime-main.616fde27.js",
     "runtime-main.js.map": "/lottery/static/js/runtime-main.616fde27.js.map",
     "static/js/2.0ada1ba2.chunk.js": "/lottery/static/js/2.0ada1ba2.chunk.js",
     "static/js/2.0ada1ba2.chunk.js.map": "/lottery/static/js/2.0ada1ba2.chunk.js.map",
     "index.html": "/lottery/index.html",
-    "precache-manifest.04d0ac555a61b71b4007640b670390f1.js": "/lottery/precache-manifest.04d0ac555a61b71b4007640b670390f1.js",
+    "precache-manifest.204814bf0c92991623c89c2686f324bc.js": "/lottery/precache-manifest.204814bf0c92991623c89c2686f324bc.js",
     "service-worker.js": "/lottery/service-worker.js",
     "static/css/main.f25ce508.chunk.css.map": "/lottery/static/css/main.f25ce508.chunk.css.map",
     "static/js/2.0ada1ba2.chunk.js.LICENSE.txt": "/lottery/static/js/2.0ada1ba2.chunk.js.LICENSE.txt",
-    "static/js/main.1e77e9eb.chunk.js.LICENSE.txt": "/lottery/static/js/main.1e77e9eb.chunk.js.LICENSE.txt",
+    "static/js/main.5f3854ed.chunk.js.LICENSE.txt": "/lottery/static/js/main.5f3854ed.chunk.js.LICENSE.txt",
     "static/media/megamillogo.svg": "/lottery/static/media/megamillogo.bb7b8679.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.616fde27.js",
     "static/js/2.0ada1ba2.chunk.js",
     "static/css/main.f25ce508.chunk.css",
-    "static/js/main.1e77e9eb.chunk.js"
+    "static/js/main.5f3854ed.chunk.js"
   ]
 }
