@@ -90,13 +90,15 @@ const Generator = () => {
     const occurrenceTextStyle = {
         color: 'white',
         fontSize: '2em',
-        textShadow: '1.5px 1.5px 1px black'
+        textShadow: '1.5px 1.5px 1px black',
+        userSelect:'none'
     };
     const oddsTextStyle = {
         color: 'white',
         fontSize: '2rem',
         textShadow: '2px 2px 1px black',
-        userSelect: 'none'
+        userSelect: 'none',
+        
     };
     const ballDescTextStyle = {
         color: 'white',
@@ -476,7 +478,7 @@ const Generator = () => {
                     : null}
 
                 {generatorToggle === true && !selectFirstNum && !selectSecondNum && !selectThirdNum && !selectFourthNum && !selectFifthNum && !selectMBallNum ?
-                    <p style={{ fontSize: '1em', color: 'white' }} > Click a ball to view past winning history.</p>
+                    <p style={{ fontSize: '1em', color: 'white',userSelect:'none' }} > Click a ball to view its past winning history.</p>
                     : null}
             </div>
             { /* //! Occurrence Count Display----------------------------------------------------------------------------------> */}

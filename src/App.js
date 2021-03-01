@@ -20,7 +20,7 @@ function App() {
     <div style={{background:'rgba(0,0,0,.9)',backgroundSize:"",height:'100%',minHeight:'100vh',backgroundPosition:'center'}}>
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column', height:'' }}>
         <div style={{display:'flex', flexDirection:'row', justifyContent:'center', marginTop:'2%',  filter:'drop-shadow(10px 10px 10px black)'}}>
-          <img alt="MegaMillions Logo" src={logo} style={{ width: '30%', filter:'drop-shadow(4px 4px 2px white)',     backgroundColor: 'rgba(0, 45, 125, .1)',paddingLeft:'30%',paddingRight:'30%', paddingTop: '1%', paddingBottom: '1%' ,borderRadius: '3%'}} />
+          <img alt="MegaMillions Logo" draggable='false' src={logo} style={{ userSelect:'none',width: '30%', filter:'drop-shadow(4px 4px 2px white)',     backgroundColor: 'rgba(0, 45, 125, .1)',paddingLeft:'30%',paddingRight:'30%', paddingTop: '1%', paddingBottom: '1%' ,borderRadius: '3%'}} />
         </div>
         <Generator />
       </div>
